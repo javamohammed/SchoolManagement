@@ -1,0 +1,63 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+ <form action="/create" method="POST" >
+    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <div class="userForm">
+    <h2>Sign In :</h2>
+    <p>
+    Please complete the from belllow.
+    </p>
+    <hr/>
+        <div class="userControl">
+        <label class="userLabel">Name:</label>
+            <input class="inputText <%if(typeof nameError == 'string' && nameError){%>border-error<%}%>" type="text" name="name"  value="<%= name%>"  />
+            <% if(typeof nameError == 'string' && nameError){ %>
+                <div class="msg-error"><%= nameError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Email:</label>
+            <input class="inputText <%if(typeof emailError == 'string' && emailError){%>border-error<%}%>" type="text" name="email"  value="<%= email%>" />
+            <% if(typeof emailError == 'string' && emailError){ %>
+                <div class="msg-error"><%= emailError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Password:</label>
+            <input class="inputText  <%if(typeof passwordError == 'string' && passwordError){%>border-error<%}%>" type="password" name="password"  />
+            <% if(typeof passwordError == 'string' && passwordError){ %>
+                <div class="msg-error"><%= passwordError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Confirm Password:</label>
+            <input class="inputText  <%if(typeof password_confirmError == 'string' && password_confirmError){%>border-error<%}%>" type="password" name="password_confirm"  />
+            <% if(typeof password_confirmError == 'string' && password_confirmError){ %>
+                <div class="msg-error"><%= password_confirmError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Phone:</label>
+            <input  class="inputText <%if(typeof phoneError == 'string' && phoneError){%>border-error<%}%>" type="text" name="phone"  value="<%= phone%>"  />
+            <% if(typeof phoneError == 'string' && phoneError){ %>
+                <div class="msg-error"><%= phoneError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Number Pattern:</label>
+            <input class="inputText" type="text" name="number_pattern"  value="<%= number_pattern%>"  />
+        </div>
+        <div class="userControl">
+            <button>Create</button>
+        </div>
+        </div>
+</form>
+</main>
+
+
+<%- include('../footer') -%>

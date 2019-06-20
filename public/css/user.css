@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
+.userForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 0.1rem solid goldenrod;
+    font-family: 'Oswald', sans-serif;
+}
+.userForm hr {
+    width: 30rem;
+    margin: 0
+}
+.userForm p {
+    font-family: none;
+    margin: 0;
+    color: gray
+}
+.userControl{
+    padding-left: 8rem;
+    margin: 2rem;
+    /*text-align: justify;*/
+
+}
+.userControl .inputText{
+    border-radius: 30%;
+    width: 15rem;
+    height: 2rem;
+    border: 0.1rem  solid black;
+}
+.userControl .inputText:focus{
+    outline: none;
+}
+.userControl label {
+    font-family: 'Oswald', sans-serif;
+}
+.userControl button {
+     border-radius: 30%;
+     width: 15rem;
+     height: 2rem;
+     border: 0.1rem solid black;
+     font-family: 'Oswald', sans-serif;
+}
+
+.userControl button:hover,
+.userControl button:active {
+    background-color: goldenrod;
+    border: 0.1rem solid grey;
+    cursor: pointer;
+}
+
+.userControl button:focus {
+    outline: none;
+}
+.msg-error {
+    color: red;
+    font-size: 0.9rem;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+}
+.userControl .border-error {
+    border: 0.1rem solid red;
+}
+
+@media(max-width: 40rem) {
+.userControl .inputText {
+    border-radius: 30%;
+    width: 10rem;
+}
+.userControl button {
+    border-radius: 30%;
+    width: 10rem;
+}
+.userForm {
+    display: flex;
+    flex-direction: column;
+    border: 0.1rem solid goldenrod;
+    font-family: 'Oswald',
+    sans-serif;
+}
+.userForm hr {
+    width: 10rem;
+    margin: 0
+}
+.userControl {
+    padding-left: 2rem;
+    margin: 2rem;
+    /*text-align: justify;*/
+
+}
+.border-error {
+    border: 0.1rem solid red;
+}
+
+}
