@@ -25,7 +25,32 @@ const userSchema = new Schema({
     is_confirmed: {
         type: Boolean,
         required: true
-    }
+    },
+    confirmation:[
+        {
+            token:{
+            type:String,
+            required: true
+            },
+            date:{
+                type:Date,
+                default: Date.now
+            }
+
+        }
+    ],
+    resetPassword: [{
+        token: {
+            type: String,
+            required: true
+        },
+        date: {
+            type: Date,
+            default: Date.now
+        }
+
+    }],
+
 })
 
 module.exports = mongoose.model('User', userSchema);

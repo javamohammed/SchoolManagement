@@ -1,0 +1,132 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+ <form action="/create/account" method="POST"  enctype="multipart/form-data" >
+    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <div class="userForm">
+    <h2>Sign In (User School) :</h2>
+    <p>
+    Please complete the from belllow.
+    </p>
+    <hr/>
+        <div class="userControl">
+            <label class="userLabel">Name School:</label>
+            <select class="inputText <%if(typeof school_nameError == 'string' && school_nameError){%>border-error<%}%>" name="name_school">
+            <% names_schools.forEach(function(user){ %>
+                <option value="<%=user.id%>"><%=user.name%></option>
+            <% }); %>
+
+            </select>
+            <% if(typeof school_nameError == 'string' && school_nameError){ %>
+                <div class="msg-error"><%= school_nameError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">First name:</label>
+            <input class="inputText <%if(typeof first_nameError == 'string' && first_nameError){%>border-error<%}%>" type="text" name="first_name"  value="<%=first_name%>"  />
+             <% if(typeof first_nameError == 'string' && first_nameError){ %>
+                <div class="msg-error"><%= first_nameError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Last name:</label>
+            <input class="inputText <%if(typeof last_nameError == 'string' && last_nameError){%>border-error<%}%>" type="text" name="last_name"  value="<%=last_name%>"  />
+            <% if(typeof last_nameError == 'string' && last_nameError){ %>
+                <div class="msg-error"><%= last_nameError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Email:</label>
+            <input class="inputText <%if(typeof emailError == 'string' && emailError){%>border-error<%}%>" type="text" name="email"  value="<%= email%>" />
+            <% if(typeof emailError == 'string' && emailError){ %>
+                <div class="msg-error"><%= emailError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Birthday:</label>
+            <input  class="inputText  <%if(typeof birthdayError == 'string' && birthdayError){%>border-error<%}%>"  type="date" id="start" name="birthday" value="<%= birthday%>" min="1900-01-01" max="2015-01-01">
+            <% if(typeof birthdayError == 'string' && birthdayError){ %>
+                <div class="msg-error"><%= birthdayError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Identity:</label>
+            <input class="inputText  <%if(typeof identityError == 'string' && identityError){%>border-error<%}%>" type="text" name="identity"  value="<%= identity%>"  />
+             <% if(typeof identityError == 'string' && identityError){ %>
+                <div class="msg-error"><%= identityError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Type document:</label>
+             <select class="inputText <%if(typeof type_docError == 'string' && type_docError){%>border-error<%}%>" name="type_doc">
+            <% types_doc.forEach(function(doc){ %>
+                <option value="<%=doc%>"><%=doc%></option>
+            <% }); %>
+
+            </select>
+            <% if(typeof type_docError == 'string' && type_docError){ %>
+                <div class="msg-error"><%= type_docError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Image document:</label>
+            <input class="<%if(typeof image_docError == 'string' && image_docError){%>border-error<%}%>" type="file" name="image_doc" accept="image/*" />
+            <% if(typeof image_docError == 'string' && image_docError){ %>
+                <div class="msg-error"><%= image_docError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Type Account:</label>
+            <select class="inputText <%if(typeof type_userError == 'string' && type_userError){%>border-error<%}%>" name="type_user">
+            <% types_users.forEach(function(user){ %>
+                <option value="<%=user%>"><%=user%></option>
+            <% }); %>
+
+            </select>
+            <% if(typeof type_userError == 'string' && type_userError){ %>
+                <div class="msg-error"><%= type_userError%></div>
+            <%} %>
+        </div>
+
+        <div class="userControl">
+            <label class="userLabel">Password:</label>
+            <input class="inputText  <%if(typeof passwordError == 'string' && passwordError){%>border-error<%}%>" type="password" name="password"  />
+            <% if(typeof passwordError == 'string' && passwordError){ %>
+                <div class="msg-error"><%= passwordError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Confirm Password:</label>
+            <input class="inputText  <%if(typeof password_confirmError == 'string' && password_confirmError){%>border-error<%}%>" type="password" name="password_confirm"  />
+            <% if(typeof password_confirmError == 'string' && password_confirmError){ %>
+                <div class="msg-error"><%= password_confirmError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Phone:</label>
+            <input  class="inputText <%if(typeof phoneError == 'string' && phoneError){%>border-error<%}%>" type="text" name="phone"  value="<%= phone%>"  />
+            <% if(typeof phoneError == 'string' && phoneError){ %>
+                <div class="msg-error"><%= phoneError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <button>Create</button>
+        </div>
+        </div>
+</form>
+</main>
+
+
+<%- include('../footer') -%>

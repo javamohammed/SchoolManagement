@@ -59,10 +59,79 @@
     font-family: 'Oswald', sans-serif;
     text-align: center;
 }
-.userControl .border-error {
+.border-error {
     border: 0.1rem solid red;
 }
+.forgot--and--create li  {
+    list-style: none;
+    text-align: center;
+}
+.forgot--and--create  li a{
+    text-decoration: none;
+    color: #0091FF;
+}
+.forgot--and--create li a:hover,
+.forgot--and--create li a:active {
+    color: gray;
+}
+.myprofile--user {
+    margin-top: 10rem;
+    padding: 5rem;
+    border: 0.1rem solid goldenrod;
+    font-family: 'Oswald', sans-serif;
+    display: grid;
+    grid-template-columns: 8rem 10rem;
+    grid-gap: 2rem;
+    justify-content: center;
+    align-content: center;
+}
+.myprofile--user-value{
+    color:#0091FF;
+}
+.hide--class {
+    display: none;
+}
+.display-image_url_doc{
+    height: 10rem;
+    width: 10.5rem;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #60A3BC;
+    border: 1px solid #60A3BC;
+    margin: 0 1rem;
+    padding: 0.5rem;
+}
+
+.pagination a:hover,
+.pagination a:active,
+.pagination a.active {
+    background: #60A3BC;
+    color: white;
+}
+.input--note {
+    width: 4rem;
+}
 @media(max-width: 40rem) {
 .userControl .inputText {
     border-radius: 30%;
@@ -89,8 +158,11 @@
     /*text-align: justify;*/
 
 }
-.border-error {
-    border: 0.1rem solid red;
+.myprofile--user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 }

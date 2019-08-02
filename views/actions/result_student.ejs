@@ -1,0 +1,44 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/select-css.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+  <caption><h2>Result notes of : <%= student_name %></h2></caption>
+<div>
+<main>
+  <table>
+  <thead>
+    <tr>
+      <th scope="col">Subject</th>
+	  <th scope="col">Note</th>
+      <th scope="col">Teacher</th>
+    </tr>
+  </thead>
+   <% if (students.length > 0) {%>
+  <tbody>
+    <% students.forEach(function(student){ %>
+    <tr>
+      <td data-label="Subject" class="note-actions"><%= student.subject_label%></td>
+      <td data-label="Note" class="note-actions"><%= student.note%></td>
+      <td data-label="Teacher" class="note-actions"><%= student.teacher_name%></td>
+    </tr>
+
+   <% }); %>
+    <tr>
+      <td data-label="Note" class="note-actions">Total:</td>
+      <td data-label="Teacher" class="note-actions"><%=total%></td>
+      <td data-label="Subject" class="note-actions">--</td>
+    </tr>
+  </tbody>
+  <%}else{%>
+  <h2>No Result Found!</h2>
+  <%}%>
+  </table>
+</main>
+
+
+<%- include('../footer') -%>

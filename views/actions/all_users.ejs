@@ -1,0 +1,46 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+  <table>
+  <caption>All <%=type_users%></caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Identity</th>
+      <th scope="col">Type Document</th>
+	  <th scope="col">Phone</th>
+	  <th scope="col">Actions</th>
+    </tr>
+  </thead>
+   <% if (users.length > 0) {%>
+  <tbody>
+  <% users.forEach(function(userSchool){ %>
+    <tr>
+      <td data-label="Name"><%= userSchool.first_name%> <%= userSchool.last_name%></td>
+      <td data-label="Email"><%= userSchool.email%></td>
+      <td data-label="Identity"><%= userSchool.identity%></td>
+      <td data-label="Type Document"><%= userSchool.type_doc%></td>
+	  <td data-label="Phone"><%= userSchool.phone%></td>
+	  <td data-label="Actions">
+		<div class="button_cont" align="center">
+		  <a class="example_b" href="/user/delete/<%= userSchool._id%>"  rel="nofollow noopener">Delete</a>
+		</div>
+	  </d>
+    </tr>
+    <% }); %>
+  </tbody>
+  <%}else{%>
+  <h2>No <%=type_users%> Found!</h2>
+    <%}%>
+</table>
+   <%- include('../pagination.ejs', {currentPage: currentPage, previousPage: previousPage, hasPreviousPage:hasPreviousPage, hasNextPage:hasNextPage, lastPage:lastPage}) %>
+</main>
+
+
+<%- include('../footer') -%>

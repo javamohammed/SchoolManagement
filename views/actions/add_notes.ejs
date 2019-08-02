@@ -1,0 +1,52 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/select-css.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+  <caption><h2>Add notes:</h2></caption>
+<div>
+<% if (typeof error == 'string' && error != '') {%>
+<div class="msg-error"><%= error %></div>
+<% } %>
+<% if (typeof success == 'string' && success != '') {%>
+<div class="msg-flash-success"><%= success %></div>
+<% } %>
+</div>
+<main>
+  <table>
+  <thead>
+    <tr>
+      <th scope="col">Student</th>
+      <th scope="col">Subject</th>
+	  <th scope="col">Note</th>
+    </tr>
+  </thead>
+   <% if (students.length > 0) {%>
+   <form action="/add/notes" method="POST">
+  <tbody>
+    <% students.forEach(function(student){ %>
+    <tr>
+      <td data-label="Student"><%= student.student_name%></td>
+      <td data-label="Subject"><%= student.subject_label%></td>
+      <td data-label="Note"><input class="input--note" type="text" name="<%=student._id%>" value="<%= student.note%>"></td>
+    </tr>
+
+   <% }); %>
+  </tbody>
+        <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+        <div class="userControl">
+        <button>Submit</button>
+        </div>
+    </form>
+  <%}else{%>
+  <h2>you don't have any student!</h2>
+  <%}%>
+  </table>
+</main>
+
+
+<%- include('../footer') -%>

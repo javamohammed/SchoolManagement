@@ -1,0 +1,32 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+    <form action="/subject/edit" method="POST" >
+    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <input type="hidden" name="subjectId" value="<%= subjectId%>">
+    <div class="userForm">
+    <h2>Edit Subject:</h2>
+    <p>
+    Please complete the from belllow.
+    </p>
+    <hr/>
+        <div class="userControl">
+            <label class="userLabel">Label:</label>
+            <input class="inputText <%if(typeof labelError == 'string' && labelError){%>border-error<%}%>" type="text" name="label"  value="<%= label%>" />
+            <% if(typeof labelError == 'string' && labelError){ %>
+                <div class="msg-error"><%= labelError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <button>Update</button>
+        </div>
+        </div>
+</form>
+</main>
+
+
+<%- include('../footer') -%>

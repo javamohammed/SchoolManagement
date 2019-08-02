@@ -1,0 +1,57 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/select-css.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+<div class="backdrop"></div>
+    <div class="modal">
+        <h2 class="modal__title">Do you want to save?</h2>
+         <select class="select-css <%if(typeof subjectError == 'string' && subjectError){%>border-error<%}%>" id='subject' name="subject">
+            <% subjects.forEach(function(subject){ %>
+                <option value="<%=subject._id%>"><%=subject.label%></option>
+            <% }); %>
+
+            </select>
+            <% if(typeof subjectError == 'string' && subjectError){ %>
+                <div class="msg-error"><%= subjectError%></div>
+            <%} %>
+        <div class="modal__actions">
+            <a href="#" class="modal__action" onclick="saveChangeSubject()">Yes!</a>
+            <button class="modal__action modal__action--negative" type="button">No!</button>
+        </div>
+    </div>
+
+  <table>
+  <caption>Affected subjects to teachers</caption>
+  <thead>
+    <tr>
+      <th scope="col">Teacher</th>
+	  <th scope="col">Subject</th>
+    </tr>
+  </thead>
+   <% if (teachers.length > 0) {%>
+  <tbody>
+   <% teachers.forEach(function(teacher){ %>
+    <tr>
+      <td data-label="Teacher"><%= teacher.first_name%> <%=teacher.last_name%>(<%=teacher._id%>)</td>
+      <td data-label="Subject">
+      <a class="example_b pagination" href="#" onclick="getPrepop('<%=teacher._id%>')" id="<%=teacher._id%>" rel="nofollow noopener">set</a>
+      <a href="#"  id="<%=teacher._id%>-idTeach" onclick="getSubject('<%=teacher._id%>')" class="example_b pagination" rel="nofollow noopener">show</a>
+      </td>
+    </tr>
+
+   <% }); %>
+  </tbody>
+  <%}else{%>
+  <h2>No Teacher Found!</h2>
+  <%}%>
+  </table>
+  <%- include('../pagination.ejs', {currentPage: currentPage, previousPage: previousPage, hasPreviousPage:hasPreviousPage, hasNextPage:hasNextPage, lastPage:lastPage}) %>
+</main>
+
+
+<%- include('../footer') -%>

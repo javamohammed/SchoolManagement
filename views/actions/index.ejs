@@ -1,0 +1,35 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+    <div class="sub-menu-actions">
+        <a href="/profile">Show && Edit my Profile</a>
+        <%if(type_user =='school'){%>
+            <a href="/subject/add">Add new Subject</a>
+            <a href="/subjects/all">Show all Subjects</a>
+            <a href="/affected/subjects/to/teachers">Affected subjects to teachers</a>
+            <a href="/affected/students/to/teachers">Affected students to teachers</a>
+            <a href="/all/teachers">Show all Teachers</a>
+            <a href="/all/students">Show all Students</a>
+            <a href="/all/parents">Show all Perents</a>
+            <a href="/stats">Stats</a>
+        <%}%>
+
+        <%if(type_user =='not_school' && type_user_school == 'Parent'){%>
+            <a href="/select/sons">Select my Son(s)</a>
+            <a href="/pay/invoice">Pay your invoice</a>
+        <%}%>
+         <%if(type_user =='not_school' && type_user_school == 'Teacher'){%>
+            <a href="/add/notes">Add notes to students</a>
+        <%}%>
+         <%if(type_user =='not_school' && type_user_school == 'Student'){%>
+            <a href="/student/notes/<%= user_id%>">Show my notes</a>
+        <%}%>
+    </div>
+</main>
+
+
+<%- include('../footer') -%>

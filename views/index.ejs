@@ -5,7 +5,9 @@
 <body>
 <%- include('navbar')%>
 <main>
-
+<% if (typeof success_user == 'string') {%>
+<div class="msg-flash-success"><%= success_user %></div>
+<% } %>
 Les tapis de découpe Cricut sont des feuilles adhésives utilisées dans les machines du même fabricant. Ils sont conçus pour durer pendant 25 à 40 utilisations, mais leur nettoyage peut prolonger leur durée de vie. Pour nettoyer le tapis et renouveler son adhésif, vous pouvez fréquemment effectuer un léger nettoyage et un nettoyage plus en profondeur lorsqu’il devient très sale. Si, après le nettoyage, le tapis n’a plus d’adhésif, il existe des moyens d’en ajouter une nouvelle couche [1].
 
 Méthode

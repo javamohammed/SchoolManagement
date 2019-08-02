@@ -1,0 +1,33 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+ <form action="/profile" method="POST" >
+ <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <div class="myprofile--user">
+    <div>Name School:</div>
+    <div class="myprofile--user-value "><%=name%> <input class="inputText <%if(errorShow != 'yes'){%>hide--class<%}%>  <%if(typeof nameError == 'string' && nameError){%>border-error<%}%>" type="text" name="name"  value="<%= name%>" /></div>
+    <% if(typeof nameError == 'string' && nameError){ %>
+                <div class="msg-error"><%= nameError%></div>
+            <%} %>
+    <div>Email: </div>
+    <div class="myprofile--user-value"><%=email%></div>
+    <div>Number phone: </div>
+    <div class="myprofile--user-value"><%=phone%><input  class="inputText <%if(errorShow != 'yes'){%>hide--class<%}%> <%if(typeof phoneError == 'string' && phoneError){%>border-error<%}%>" type="text" name="phone"  value="<%= phone%>"  />
+            <% if(typeof phoneError == 'string' && phoneError){ %>
+                <div class="msg-error"><%= phoneError%></div>
+            <%} %>
+            </div>
+    <div>Number pattern: </div>
+    <div class="myprofile--user-value"><%=number_pattern%><input class="inputText <%if(errorShow != 'yes'){%>hide--class<%}%>" type="text" name="number_pattern"  value="<%= number_pattern%>"  /></div>
+    <div>Edit my settings: </div><div class="myprofile--user-value"><input type="checkbox"  id="edit_my_settings"/></div>
+    </div>
+    <div></div><div class="userControl <%if(errorShow != 'yes'){%>hide--class<%}%>"><button>Edit</button></div>
+</form>
+</main>
+
+
+<%- include('../footer') -%>

@@ -5,19 +5,35 @@
             </div>
         <div class="menu--mobile">
             <div class="menu--list--mobile">
-                <a href="/" class="menu--item logo"><img src="favicon.ico" /></a>
+                <a href="/" class="menu--item logo"><img src="/favicon.ico" /></a>
                 <a href="/" class="menu--item">Home</a>
                 <a href="/home" class="menu--item">Plans</a>
-                <a href="/home" class="menu--item">About Us</a>
-                <a href="/create" class="menu--item">My Account</a>
+                <a href="/profile" class="menu--item">Account School</a>
+                <a href="/profile/user" class="menu--item">Account User</a>
+                  <% if (isAuth == true){%>
+                <a href="/actions" class="menu--item">Actions</a>
+                <a href="/logout" class="menu--item">Logout</a>
+                    <%}%>
             </div>
         </div>
         <div class="menu_list">
-            <a href="/" class="menu--item logo"><img  src="favicon.ico" /></a>
+            <a href="/" class="menu--item logo"><img  src="/favicon.ico" /></a>
             <a href="/" class="menu--item">Home</a>
             <a href="/home" class="menu--item">Plans</a>
             <a href="/home" class="menu--item">About Us</a>
-            <a href="/create" class="menu--item">My Account</a>
-        </div>
+             <% if (typeof type_user == 'string' && type_user == 'school'){%>
+                    <a href="/profile" class="menu--item">Account School</a>
+             <%}%>
+             <% if (typeof type_user == 'string' && type_user == 'not_school'){%>
+                    <a href="/profile/user" class="menu--item">Account User</a>
+             <%}%>
+             <% if ( typeof type_user != 'string' ){%>
+                    <a href="/profile" class="menu--item">Account School</a>
+                    <a href="/profile/user" class="menu--item">Account User</a>
+             <%}%>
+            <% if (isAuth == true){%>
+            <a href="/actions" class="menu--item">Actions</a>
+            <a href="/logout" class="menu--item">Logout</a>
+            <%}%>
     </nav>
 </div>

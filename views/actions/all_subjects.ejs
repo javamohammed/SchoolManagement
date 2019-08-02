@@ -1,0 +1,39 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+  <table>
+  <caption>All subjects</caption>
+  <thead>
+    <tr>
+      <th scope="col">Label</th>
+	  <th scope="col">Actions</th>
+    </tr>
+  </thead>
+   <% if (subjects.length > 0) {%>
+  <tbody>
+  <% subjects.forEach(function(subject){ %>
+    <tr>
+      <td data-label="Label"><%= subject.label%></td>
+	  <td data-label="Actions">
+		<div class="button_cont" align="center">
+		  <a class="example_b" href="/subject/delete/<%= subject._id%>"  rel="nofollow noopener">Delete</a>
+		  <a class="example_b" href="/subject/edit/<%= subject._id%>" rel="nofollow noopener">Edit</a>
+		</div>
+	  </d>
+    </tr>
+    <% }); %>
+  </tbody>
+  <%}else{%>
+  <h2>No Subjects Found!</h2>
+    <%}%>
+</table>
+   <%- include('../pagination.ejs', {currentPage: currentPage, previousPage: previousPage, hasPreviousPage:hasPreviousPage, hasNextPage:hasNextPage, lastPage:lastPage}) %>
+</main>
+
+
+<%- include('../footer') -%>

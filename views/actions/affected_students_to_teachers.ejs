@@ -1,0 +1,68 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/select-css.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+  <caption><h2>Affected students to teachers</h2></caption>
+<div>
+<% if (typeof error == 'string' && error != '') {%>
+<div class="msg-error"><%= error %></div>
+<% } %>
+<% if (typeof success == 'string' && success != '') {%>
+<div class="msg-flash-success"><%= success %></div>
+<% } %>
+<form action="/affected/students/to/teachers" method="POST">
+<input type="hidden" name="_csrf" value="<%= csrfToken%>">
+<caption>Students:</caption>
+<select class="select-css" multiple name="students">
+  <% users.forEach(function(user){ %>
+  <% if (user.type_user_school == 'Student') {%>
+    <option value="<%=user._id%>"><%=user.first_name%> <%=user.last_name%></option>
+    <% } %>
+  <% }); %>
+
+</select>
+<caption>Teachers:</caption>
+<select class="select-css" multiple name="teachers">
+   <% users.forEach(function(user){ %>
+  <% if (user.type_user_school == 'Teacher') {%>
+    <option value="<%=user._id%>"><%=user.first_name%> <%=user.last_name%></option>
+    <% } %>
+  <% }); %>
+</select>
+ <div class="userControl">
+<button>Submit</button>
+</div>
+</form>
+</div>
+  <table>
+  <thead>
+    <tr>
+      <th scope="col">Student</th>
+      <th scope="col">Teacher</th>
+	  <th scope="col">Subject</th>
+    </tr>
+  </thead>
+   <% if (affected_rows.length > 0) {%>
+  <tbody>
+    <% affected_rows.forEach(function(affected){ %>
+    <tr>
+      <td data-label="Student"><%= affected.student_name%></td>
+      <td data-label="Teacher"><%= affected.teacher_name%></td>
+      <td data-label="Subject"><%= affected.subject_label%></td>
+    </tr>
+
+   <% }); %>
+  </tbody>
+  <%}else{%>
+  <h2>No Teacher Found!</h2>
+  <%}%>
+  </table>
+</main>
+
+
+<%- include('../footer') -%>

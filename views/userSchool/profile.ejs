@@ -1,0 +1,53 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+ <form action="/profile/user" method="POST"  enctype="multipart/form-data" >
+ <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <div class="myprofile--user">
+    <div><img class="display-image_url_doc" src="/<%=image_url_avatar%>" alt="Avatar">
+     <input class="custom-file-input <%if(typeof image_url_avatarError == 'string' && image_url_avatarError){%>border-error<%}%>" type="file" name="image_doc" accept="image/*" />
+        <% if(typeof image_url_avatarError == 'string' && image_url_avatarError){ %>
+            <div class="msg-error"><%= image_url_avatarError%></div>
+        <%} %></div>
+    <div>
+    </div>
+    <div>First Name:</div>
+    <div class="myprofile--user-value "><%=first_name%> <input class="inputText <%if(errorShow != 'yes'){%>hide--class<%}%>  <%if(typeof first_nameError == 'string' && first_nameError){%>border-error<%}%>" type="text" name="first_name"  value="<%= first_name%>" />
+    <% if(typeof first_nameError == 'string' && first_nameError){ %>
+                <div class="msg-error"><%= first_nameError%></div>
+            <%} %>
+            </div>
+     <div>Last Name:</div>
+    <div class="myprofile--user-value "><%=last_name%> <input class="inputText <%if(errorShow != 'yes'){%>hide--class<%}%>  <%if(typeof last_nameError == 'string' && last_nameError){%>border-error<%}%>" type="text" name="last_name"  value="<%= last_name%>" />
+    <% if(typeof last_nameError == 'string' && last_nameError){ %>
+                <div class="msg-error"><%= last_nameError%></div>
+            <%} %>
+            </div>
+    <div>Email: </div>
+    <div class="myprofile--user-value"><%=email%></div>
+    <div>Number phone: </div>
+    <div class="myprofile--user-value"><%=phone%><input  class="inputText <%if(errorShow != 'yes'){%>hide--class<%}%> <%if(typeof phoneError == 'string' && phoneError){%>border-error<%}%>" type="text" name="phone"  value="<%= phone%>"  />
+            <% if(typeof phoneError == 'string' && phoneError){ %>
+                <div class="msg-error"><%= phoneError%></div>
+            <%} %>
+            </div>
+    <div>My Profile: </div>
+    <div class="myprofile--user-value"><%=type_user_school%></div>
+    <div>Birthday: </div>
+    <div class="myprofile--user-value"><%=birthday%></div>
+    <div>Identity: </div>
+    <div class="myprofile--user-value"><%=type_doc%>: <%=identity%></div>
+    <div></div>
+    <div class="myprofile--user-value"> <img class="display-image_url_doc" src="/<%= image_url_doc %>" alt="<%= type_doc %>"></div>
+    <div>Edit my settings: </div><div class="myprofile--user-value"><input type="checkbox"  id="edit_my_settings"/></div>
+    </div>
+    <div></div><div class="userControl <%if(errorShow != 'yes'){%>hide--class<%}%>"><button>Edit</button></div>
+</form>
+</main>
+
+
+<%- include('../footer') -%>

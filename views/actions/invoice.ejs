@@ -1,0 +1,57 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/select-css.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+  <caption><h2>Select Your Sons</h2></caption>
+<div>
+<% if (typeof error == 'string' && error != '') {%>
+<div class="msg-error"><%= error %></div>
+<% } %>
+<% if (typeof success == 'string' && success != '') {%>
+<div class="msg-flash-success"><%= success %></div>
+<% } %>
+</div>
+<main>
+  <table>
+  <thead>
+    <tr>
+      <th scope="col">Student</th>
+      <th scope="col">Amount</th>
+	  <th scope="col">Payed</th>
+      <th scope="col">Invice to pay</th>
+    </tr>
+  </thead>
+   <% if (sons.length > 0) {%>
+   <form action="/pay/invoice" method="POST">
+  <tbody>
+    <% sons.forEach(function(son){ %>
+    <tr>
+      <td data-label="Student"><%= son.student_name%></td>
+      <td data-label="Amount"><%= son.amount%></td>
+      <td data-label="Payed"><%if(son.Payed == true){%>Yes<%}else{%>No<%}%></td>
+      <td data-label="Invice to pay"><input type="checkbox" name="sons" value="<%=son._id%>" /></td>
+    </tr>
+
+   <% }); %>
+  </tbody>
+        <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+        <div class="userControl">
+        <button>Submit</button>
+        </div>
+    </form>
+  <%}else{%>
+  <div class="sub-menu-actions">
+    <a href="/download/invoice">Download Your Invoice</a>
+  </div>
+  <h2>you don't have any invoice!</h2>
+  <%}%>
+  </table>
+</main>
+
+
+<%- include('../footer') -%>

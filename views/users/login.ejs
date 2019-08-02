@@ -1,0 +1,45 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+<% if (typeof success_confirmation == 'string' && success_confirmation != '') {%>
+<div class="msg-flash-success"><%= success_confirmation %></div>
+<% } %>
+ <form action="/login" method="POST" >
+    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <div class="userForm">
+    <h2>LogIn :</h2>
+    <p>
+    Please complete the from belllow.
+    </p>
+    <hr/>
+        <div class="userControl">
+            <label class="userLabel">Email:</label>
+            <input class="inputText <%if(typeof emailError == 'string' && emailError){%>border-error<%}%>" type="text" name="email"  value="<%= email%>" />
+            <% if(typeof emailError == 'string' && emailError){ %>
+                <div class="msg-error"><%= emailError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <label class="userLabel">Password:</label>
+            <input class="inputText  <%if(typeof passwordError == 'string' && passwordError){%>border-error<%}%>" type="password" name="password"  />
+            <% if(typeof passwordError == 'string' && passwordError){ %>
+                <div class="msg-error"><%= passwordError%></div>
+            <%} %>
+        </div>
+        <div class="userControl">
+            <button>Login</button>
+        </div>
+            <ul class="forgot--and--create">
+                <li><a href="/forgotpassword">Forgot your password?</a></li>
+                <li>Don’t have an account yet?<a href="/create">Sign up</a></li>
+            </ul>
+        </div>
+</form>
+</main>
+
+
+<%- include('../footer') -%>

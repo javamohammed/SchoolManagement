@@ -1,0 +1,38 @@
+<%- include('../header') -%>
+<link rel="stylesheet" href="/css/mytable.css">
+<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/select-css.css">
+</head>
+<body>
+<%- include('../navbar')%>
+
+<main>
+  <caption><h2>Stats:</h2></caption>
+    <canvas id="myChart"></canvas>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: <%- JSON.stringify(labels) %>,
+        datasets: [{
+            label: 'Subjects by notes',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [<%= data %>]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+    </script>
+<%- include('../footer') -%>
