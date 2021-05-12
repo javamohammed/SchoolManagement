@@ -21,7 +21,7 @@
     "express-validator": "^5.3.1",
     "mongoose": "^5.5.15",
     "multer": "^1.4.1",
-    "nodemailer": "^6.2.1",
+    "nodemailer": "^6.4.16",
     "pdfkit": "^0.10.0",
     "stripe": "^7.5.0",
     "uniqid": "^5.0.3"
